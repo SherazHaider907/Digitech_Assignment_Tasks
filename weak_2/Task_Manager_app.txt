@@ -1,0 +1,77 @@
+WEEK_2
+Language: Python 3
+Type: Individual Project
+Submission Deadline: As communicated by your supervisor
+Estimated Time: 6–8 hours
+Design and develop a command-line Task Manager app where users can create, update,
+complete, view, delete, and filter their daily tasks. The app will store tasks in memory and
+optionally save them to a file for persistence.
+Task Creation:
+• Prompt the user to enter a task name.
+• Ask for task priority (Low, Medium, High).
+• Automatically mark it as "Incomplete".
+• Store it in a list of dictionaries.
+Example:
+task = {"title": "Buy milk", "priority": "High", "completed": False}
+Python Code File:
+task_manager.py
+Data File:
+tasks.txt
+Menu
+The application must present a menu that keeps running until the user exits:
+===== Task Manager =====
+1. Add a task
+2. View all tasks
+3. Update a task
+4. Mark a task as complete
+5. Delete a task
+6. Filter tasks
+7. Exit
+========================
+Enter your choice:
+Functional Requirements
+1. Task Creation
+The user must be able to add a new task by providing a title and selecting a priority level (Low,
+Medium, or High). Every task must be automatically assigned a unique ID and marked as
+incomplete upon creation. The task structure must follow this format:
+task = { "id": 1, "title": "Buy milk", "priority": "High", "completed": False}
+2. View All Tasks
+Display all tasks in a clean, numbered, and readable format showing the task ID, title, priority,
+and status. If no tasks exist, display an appropriate message. Raw dictionary or list output is not
+acceptable.
+3. Update a Task
+Allow the user to update the title and/or priority of an existing task by selecting it from the list.
+If the user leaves a field blank, the existing value must remain unchanged.
+4. Mark as Complete
+Allow the user to mark a task as complete by selecting it from the list.
+5. Delete a Task
+Allow the user to delete a task by selecting it from the list. After deletion, confirm the action to
+the user.
+6. Filter Tasks
+Allow the user to filter tasks by:
+• Status — show only complete or only incomplete tasks
+• Priority — show only Low, Medium, or High priority tasks
+Display filtered results in the same readable format as the view screen. If no tasks match the
+filter, display an appropriate message.
+7. File Persistence
+• On startup, automatically load existing tasks from tasks.txt if the file exists.
+• On exit, automatically save all tasks to tasks.txt.
+Technical Requirements
+Object-Oriented Design
+You must apply OOP principles in your solution. At minimum, your code should include:
+• A TaskManager class to manage the collection of tasks and handle all operations (add,
+view, update, delete, filter, save, load).
+You are free to design the class structure as you see fit — the above is a minimum expectation,
+not a rigid template.
+Data Structures
+Use appropriate data structures for storing and managing tasks. You must be able to justify your
+choices if asked.
+Error Handling
+The application must never crash due to user input. All input must be validated. Use try-except
+blocks wherever necessary — invalid numbers, empty input, missing files, and out-of-range
+selections must all be handled gracefully with clear error messages.
+Code Quality
+• Use meaningful class names, method names, and variable names.
+• Keep methods focused — each method should do one thing.
+• Avoid repeating code. If the same logic appears more than once, refactor it into a
+reusable method.
