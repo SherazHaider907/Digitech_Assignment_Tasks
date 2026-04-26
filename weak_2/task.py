@@ -7,7 +7,7 @@ class Task:
 
     def to_dict(self):
         return {
-            "id": self.id,
+            'id': self.id,
             "title": self.title,
             "priority": self.priority,
             "completed": self.completed

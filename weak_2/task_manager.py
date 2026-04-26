@@ -48,12 +48,9 @@ class TaskManager:
         if new_title:
             task.title = new_title
 
-        new_priority = input("Enter new priority (Low/Medium/High or blank): ")
-        if new_priority:
-            if new_priority in ["Low", "Medium", "High"]:
-                task.priority = new_priority
-            else:
-                print("Invalid priority!")
+        print("Do you want to change priority? (y/n)")
+        if input().lower() == "y":
+            task.priority = get_valid_priority()
 
         print("Task updated!")
 
@@ -78,19 +75,52 @@ class TaskManager:
             print("Task not found!")
 
     def filter_tasks(self):
-        print("1. By Status\n2. By Priority")
+        print("\n1. By Status")
+        print("2. By Priority")
         choice = input("Choose filter: ")
 
+        filtered = []
+
         if choice == "1":
-            status = input("Complete or Incomplete: ").lower()
-            filtered = [t for t in self.tasks if (t.completed and status=="complete") or (not t.completed and status=="incomplete")]
+            print("\n1. Complete")
+            print("2. Incomplete")
+
+            status_choice = input("Choose status: ")
+
+            if status_choice == "1":
+                filtered = [t for t in self.tasks if t.completed]
+            elif status_choice == "2":
+                filtered = [t for t in self.tasks if not t.completed]
+            else:
+                print("Invalid status choice!")
+                return
 
         elif choice == "2":
-            priority = input("Low/Medium/High: ")
-            filtered = [t for t in self.tasks if t.priority == priority]
+            print("\n1. Low")
+            print("2. Medium")
+            print("3. High")
+
+            priority_choice = input("Choose priority: ")
+
+            priority_map = {
+                "1": "Low",
+                "2": "Medium",
+                "3": "High"
+            }
+
+            if priority_choice in priority_map:
+                selected_priority = priority_map[priority_choice]
+
+                filtered = [
+                    t for t in self.tasks
+                    if t.priority == selected_priority
+                ]
+            else:
+                print("Invalid priority choice!")
+                return
 
         else:
-            print("Invalid choice!")
+            print("Invalid filter choice!")
             return
 
         if not filtered:

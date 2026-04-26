@@ -1,15 +1,17 @@
-def validate_priority(priority):
-    return priority in ["Low", "Medium", "High"]
-
 def get_valid_priority():
     while True:
-        p = input("Enter priority (Low/Medium/High): ")
-        if validate_priority(p):
-            return p
-        print("Invalid priority!")
+        print("\nSelect Priority:")
+        print("1. Low")
+        print("2. Medium")
+        print("3. High")
 
-def get_int_input(prompt):
-    try:
-        return int(input(prompt))
-    except:
-        return None
+        choice = input("Enter choice (1-3): ")
+
+        if choice == "1":
+            return "Low"
+        elif choice == "2":
+            return "Medium"
+        elif choice == "3":
+            return "High"
+        else:
+            print("Invalid choice! Please enter 1, 2, or 3.")
